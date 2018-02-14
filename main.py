@@ -55,11 +55,16 @@ class MMIO32(MemoryMappedInteger):
     def __init__(self, address):
         super().__init__("I", address)
 
+class MMIO64(MemoryMappedInteger):
+    def __init__(self, address):
+        super().__init__("Q", address)
+
 class MemoryMappedScope(dict):
     def __init__(self):
         self["MMIO8"]  = MMIO8
         self["MMIO16"] = MMIO16
         self["MMIO32"] = MMIO32
+        self["MMIO64"] = MMIO64
 
         self["execfile"] = self.execfile
 
