@@ -20,3 +20,11 @@ $ ./main.py # Start REPL
 >>> FLASH_SR
 0x00
 ```
+
+## Warnings
+
+ * Since the firmware runs in unprivileged mode, privileged registers will
+   cause a memory fault
+
+ * Unlocking the flash (with `FLASH_KEYR`) will make the device unusable until
+   the MCU is reset
