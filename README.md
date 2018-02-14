@@ -11,6 +11,9 @@
 ```bash
 $ make # Generate Python code from libopencm3 header files
 $ ./main.py # Start REPL
+```
+
+```python
 (InteractiveConsole)
 >>> RNG_DR # Read from memory-mapped registers
 0x86d438d4
