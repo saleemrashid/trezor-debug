@@ -35,6 +35,5 @@ $ ./main.py # Start REPL
 
  * Since the firmware runs in unprivileged mode, privileged registers will
    cause a memory fault
-
  * Unlocking the flash (with `FLASH_KEYR`) will make the device unusable until
    the MCU is reset
