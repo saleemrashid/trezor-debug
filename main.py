@@ -87,6 +87,9 @@ class MemoryMappedScope(dict):
     def execfile(self, filename):
         exec(compile(open(filename).read(), filename, "exec"), self)
 
+    def __repr__(self):
+        return "<{}>".format(self.__class__.__name__)
+
 scope = MemoryMappedScope()
 scope.execfile("generated.py")
 
