@@ -3,12 +3,17 @@ import code
 import struct
 import rlcompleter
 import readline
+import sys
 
 from trezorlib.device import TrezorDevice
 
 import trezorlib.messages as proto
 
-transport, = (device.find_debug() for device in TrezorDevice.enumerate())
+try:
+    transport, = (device.find_debug() for device in TrezorDevice.enumerate())
+except ValueError:
+    sys.exit("Exactly one TREZOR must be connected, with debug link enabled.")
+
 transport.session_begin()
 
 class HexInteger(int):
