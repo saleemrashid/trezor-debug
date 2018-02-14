@@ -79,9 +79,7 @@ def process(fsrc, fdst):
                 fdst.write("def {}:\n".format(identifier))
                 fdst.write("    return {}\n".format(replacement))
             else:
-                fdst.write("try:\n")
-                fdst.write("    {} = {}\n".format(identifier, replacement))
-                fdst.write("except NameError: pass\n")
+                fdst.write("{} = {}\n".format(identifier, replacement))
 
 
 if __name__ == "__main__":
