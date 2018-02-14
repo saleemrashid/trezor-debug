@@ -18,7 +18,7 @@ $ ./main.py # Start REPL
 0x80
 >>> FLASH_SR |= FLASH_SR_PGSERR
 >>> FLASH_SR
-0x00
+0x0
 ```
 
 ## Warnings
