@@ -61,6 +61,8 @@ class MemoryMappedScope(dict):
         self["MMIO16"] = MMIO16
         self["MMIO32"] = MMIO32
 
+        self["execfile"] = self.execfile
+
     def __getitem__(self, key):
         value = super().__getitem__(key)
 
@@ -82,11 +84,11 @@ class MemoryMappedScope(dict):
 
         super().__setitem__(key, value)
 
-    def import_from(self, filename):
+    def execfile(self, filename):
         exec(compile(open(filename).read(), filename, "exec"), self)
 
 scope = MemoryMappedScope()
-scope.import_from("generated.py")
+scope.execfile("generated.py")
 
 readline.set_completer(rlcompleter.Completer(scope).complete)
 readline.parse_and_bind("tab: complete")

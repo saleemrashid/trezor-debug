@@ -29,6 +29,7 @@ $ ./main.py # Start REPL
 >>> X = 0xffffffff
 >>> X
 0xffffffff
+>>> execfile("commands.py") # Run commands from a file
 ```
 
 ## Warnings

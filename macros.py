@@ -57,8 +57,9 @@ def process(fsrc, fdst):
         # Line markers
         if line.startswith("# "):
             filename = line.split()[2].strip("\"")
-            folder, _, _ = filename.partition(os.path.sep)
-            allowed_header = (folder == "libopencm3")
+            normal_header = not filename.startswith("<")
+            relative_header = not filename.startswith(os.path.sep)
+            allowed_header = normal_header and relative_header
 
         # Macro definitions
         elif line.startswith("#define "):
