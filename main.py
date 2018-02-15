@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import code
-import struct
-import rlcompleter
 import readline
+import rlcompleter
+import struct
 import sys
 
 from trezorlib.device import TrezorDevice
@@ -16,9 +16,11 @@ except ValueError:
 
 transport.session_begin()
 
+
 class HexInteger(int):
     def __repr__(self):
         return hex(self)
+
 
 class MemoryMappedInteger(object):
     def __init__(self, fmt, address):
@@ -43,25 +45,30 @@ class MemoryMappedInteger(object):
             flash=False
         ))
 
+
 class MMIO8(MemoryMappedInteger):
     def __init__(self, address):
         super().__init__("B", address)
+
 
 class MMIO16(MemoryMappedInteger):
     def __init__(self, address):
         super().__init__("H", address)
 
+
 class MMIO32(MemoryMappedInteger):
     def __init__(self, address):
         super().__init__("I", address)
+
 
 class MMIO64(MemoryMappedInteger):
     def __init__(self, address):
         super().__init__("Q", address)
 
+
 class MemoryMappedScope(dict):
     def __init__(self):
-        self["MMIO8"]  = MMIO8
+        self["MMIO8"] = MMIO8
         self["MMIO16"] = MMIO16
         self["MMIO32"] = MMIO32
         self["MMIO64"] = MMIO64
@@ -94,6 +101,7 @@ class MemoryMappedScope(dict):
 
     def __repr__(self):
         return "<{}>".format(self.__class__.__name__)
+
 
 scope = MemoryMappedScope()
 scope.execfile("generated.py")
